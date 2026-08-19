@@ -1,10 +1,19 @@
-CREATE DATABASE IF NOT EXISTS sistema_pratos;
-USE sistema_pratos;
+create database atv-7;
+use crud_pratos;
 
+create table usuarios (
+    id int primary key auto_increment,
+    nome varchar(100) not null,
+    email varchar(100) not null
+);
 
-CREATE TABLE IF NOT EXISTS pratos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    descricao TEXT,
-    preco DECIMAL(10,2) NOT NULL
+create table pratos (
+    id int primary key auto_increment,
+    nome varchar(100) not null,
+    descricao text not null,
+    preco decimal(10,2) not null,
+    categoria varchar(50) not null,
+
+    id_usuario int not null,
+    foreign key (id_usuario) references usuarios(id)
 );
