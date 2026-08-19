@@ -1,10 +1,18 @@
 <?php
 include '../config/database.php';
 
-$stmt = $pdo->query("SELECT * FROM pratos ORDER BY id DESC");
-$pratos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $usuario_id = $_POST['usuario'] ?? null;
 
-include '../includes/header.php';
+    if ($usuario_id) {
+        $sql = "SELECT * FROM pratos WHERE id_usuario = $usuario_id";
+        $resultado = mysqli_query($conn, $sql);
+    } else {
+        $sql = "SELECT * FROM pratos";
+        $resultado = mysqli_query($conn, $sql);
+    }
+}
+
 ?>
 
 <h2>Pratos Cadastrados</h2>
