@@ -1,5 +1,5 @@
 <?php
-require_once 'config/database.php';
+require_once '../../config/database.php';
 
 $stmt = $pdo->query("SELECT * FROM pratos ORDER BY id DESC");
 $pratos = $stmt->fetchAll(PDO::FETCH_ASSOC);
