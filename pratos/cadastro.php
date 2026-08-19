@@ -1,5 +1,5 @@
 <?php
-require_once '../config/database.php';
+include '../config/database.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
