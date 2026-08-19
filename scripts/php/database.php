@@ -1,4 +1,5 @@
 <?php
+require_once 'config/index.php';
 $host = "localhost";
 $user = "root";
 $pass = "";
