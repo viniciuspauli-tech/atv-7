@@ -20,10 +20,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 <a href="/sistema-pratos/pratos/cadastrar.php">Cadastrar Prato</a>
                 <span>Olá, <?= htmlspecialchars($_SESSION['usuario_nome']); ?>!</span>
                 <a href="/sistema-pratos/logout.php" class="btn-sair">Sair</a>
-            <?php else: ?>
-                <a href="/sistema-pratos/login.php">Login</a>
-                <a href="/sistema-pratos/cadastro.php">Criar Conta</a>
-            <?php endif; ?>
+
         </nav>
     </header>
     <main class="container">
