@@ -1,5 +1,5 @@
-create database atv-7;
-use crud_pratos;
+create database cadastro_pratos;
+use cadastro_pratos;
 
 create table usuarios (
     id int primary key auto_increment,

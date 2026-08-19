@@ -1,5 +1,5 @@
 <?php
-include '../config/database.php';
+include __DIR__ . '/../config/database.php';
 if (!isset($conn) || $conn === null) {
     die('Erro ao conectar com o banco de dados.');
 }

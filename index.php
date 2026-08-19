@@ -1,18 +1,29 @@
 <?php
-include '../config/database.php';
+include './config/database.php';
 
-if($_SERVER['REQUEST_METHOD'] === 'POST') {
+$pratos = []; // inicializa sempre, evita "undefined variable"
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario_id = $_POST['usuario'] ?? null;
 
     if ($usuario_id) {
-        $sql = "SELECT * FROM pratos WHERE id_usuario = $usuario_id";
-        $resultado = mysqli_query($conn, $sql);
+        $sql = "SELECT * FROM pratos WHERE id_usuario = ?";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, "i", $usuario_id);
+        mysqli_stmt_execute($stmt);
+        $resultado = mysqli_stmt_get_result($stmt);
     } else {
         $sql = "SELECT * FROM pratos";
         $resultado = mysqli_query($conn, $sql);
     }
-}
 
+    // transforma o resultado da query em array
+    if ($resultado) {
+        while ($row = mysqli_fetch_assoc($resultado)) {
+            $pratos[] = $row;
+        }
+    }
+}
 ?>
 
 <h2>Pratos Cadastrados</h2>
@@ -40,4 +51,4 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     </table>
 <?php endif; ?>
 
-<?php include '../includes/user.php'; ?>
+<?php include './includes/user.php'; ?>
