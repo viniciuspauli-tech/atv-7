@@ -1,5 +1,5 @@
 <?php
-include '../infra/connect.php';
+include '../config/database.php';
 if (!isset($conn) || $conn === null) {
     die('Erro ao conectar com o banco de dados.');
 }

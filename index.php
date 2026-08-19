@@ -40,4 +40,4 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     </table>
 <?php endif; ?>
 
-<?php include '../includes/footer.php'; ?>
+<?php include '../includes/user.php'; ?>
