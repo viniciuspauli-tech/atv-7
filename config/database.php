@@ -3,12 +3,14 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$dbname = "sistema_pratos";
+$dbname = "atv-7";
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Erro ao conectar com o banco de dados: " . $e->getMessage());
+
+$conn = new mysqli($host, $user, $pass, $dbname);
+
+if ($conn->connect_error) {
+    die("Erro ao conectar com o banco de dados: " . $conn->connect_error);
 }
+
+$conn->set_charset("utf8");
 ?>
